@@ -6,11 +6,11 @@ import (
 
 // Client is an interface for the entrypoint of editor package
 type Client interface {
-	// Edit reads a HCL file and appies a given filter.
+	// Edit reads a HCL file and applies a given filter.
 	// If filename is `-`, reads the input from stdin.
 	// If update is true, the outputs is written to the input file, else to stdout.
 	Edit(filename string, update bool, filter Filter) error
-	// Derive reads a HCL file and appies a given sink.
+	// Derive reads a HCL file and applies a given sink.
 	// If filename is `-`, reads the input from stdin.
 	// The outputs is always written to stdout.
 	Derive(filename string, sink Sink) error
@@ -40,7 +40,7 @@ func NewClient(o *Option) Client {
 	}
 }
 
-// Edit reads a HCL file and appies a given filter.
+// Edit reads a HCL file and applies a given filter.
 // If filename is `-`, reads the input from stdin.
 // If update is true, the outputs is written to the input file, else to stdout.
 func (c *client) Edit(filename string, update bool, filter Filter) error {
@@ -55,7 +55,7 @@ func (c *client) Edit(filename string, update bool, filter Filter) error {
 	return ReadFile(filename, c.o.OutStream, filter)
 }
 
-// Derive reads a HCL file and appies a given sink.
+// Derive reads a HCL file and applies a given sink.
 // If filename is `-`, reads the input from stdin.
 // The outputs is always written to stdout.
 func (c *client) Derive(filename string, sink Sink) error {

@@ -45,7 +45,7 @@ func (s *AttributeGetSink) Sink(inFile *hclwrite.File) ([]byte, error) {
 }
 
 // findAttribute returns first matching attribute at a given address.
-// If the address does not cantain any dots, find attribute in the body.
+// If the address does not contain any dots, find attribute in the body.
 // If the address contains dots, the last element is an attribute name,
 // and the rest is the address of the block.
 // The block is fetched by findLongestMatchingBlocks.
@@ -57,7 +57,7 @@ func findAttribute(body *hclwrite.Body, address string) (*hclwrite.Attribute, *h
 
 	a := strings.Split(address, ".")
 	if len(a) == 1 {
-		// if the address does not cantain any dots, find attribute in the body.
+		// if the address does not contain any dots, find attribute in the body.
 		attr := body.GetAttribute(a[0])
 		return attr, body, nil
 	}
@@ -90,7 +90,7 @@ func findAttribute(body *hclwrite.Body, address string) (*hclwrite.Attribute, *h
 }
 
 // findLongestMatchingBlocks returns the longest matching blocks at a  given address.
-// if the address does not cantain any dots, return all matching blocks by type.
+// if the address does not contain any dots, return all matching blocks by type.
 // If the address contains dots, the first element is a block type,
 // and the rest is labels or nested block type or composite of them.
 // It is ambiguous to find blocks from the address without a schema.
@@ -118,7 +118,7 @@ func findLongestMatchingBlocks(body *hclwrite.Body, address string) ([]*hclwrite
 	blocks := allMatchingBlocksByType(body, typeName)
 
 	if len(a) == 1 {
-		// if the address does not cantain any dots,
+		// if the address does not contain any dots,
 		// return all matching blocks by type
 		return blocks, nil
 	}
