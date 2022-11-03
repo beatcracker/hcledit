@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/minamijoyo/hcledit/editor"
+	"github.com/minamijoyo/hcledit/global"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -47,6 +48,8 @@ func runBodyGetCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 1 {
 		return fmt.Errorf("expected 1 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	address := args[0]
 	file := viper.GetString("file")

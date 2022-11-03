@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/minamijoyo/hcledit/editor"
+	"github.com/minamijoyo/hcledit/global"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -27,6 +28,8 @@ func runFmtCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 0 {
 		return fmt.Errorf("expected no argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	file := viper.GetString("file")
 	update := viper.GetBool("update")

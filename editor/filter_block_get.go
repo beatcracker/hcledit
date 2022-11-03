@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/minamijoyo/hcledit/global"
 )
 
 // BlockGetFilter is a filter implementation for getting block.
@@ -59,7 +60,7 @@ func parseAddress(address string) (string, []string, error) {
 		return "", []string{}, fmt.Errorf("failed to parse address: %s", address)
 	}
 
-	a := strings.Split(address, ".")
+	a := strings.Split(address, global.Delimiter)
 	typeName := a[0]
 	labels := []string{}
 	if len(a) > 1 {

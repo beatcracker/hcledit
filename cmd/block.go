@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/minamijoyo/hcledit/editor"
+	"github.com/minamijoyo/hcledit/global"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -53,6 +54,8 @@ func runBlockGetCmd(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("expected 1 argument, but got %d arguments", len(args))
 	}
 
+	global.Delimiter = viper.GetString("delimiter")
+
 	address := args[0]
 	file := viper.GetString("file")
 	update := viper.GetBool("update")
@@ -83,6 +86,8 @@ func runBlockMvCmd(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("expected 2 argument, but got %d arguments", len(args))
 	}
 
+	global.Delimiter = viper.GetString("delimiter")
+
 	from := args[0]
 	to := args[1]
 	file := viper.GetString("file")
@@ -107,6 +112,8 @@ func runBlockListCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 0 {
 		return fmt.Errorf("expected 0 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	file := viper.GetString("file")
 	update := viper.GetBool("update")
@@ -138,6 +145,8 @@ func runBlockRmCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 1 {
 		return fmt.Errorf("expected 1 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	address := args[0]
 	file := viper.GetString("file")
@@ -172,6 +181,8 @@ func runBlockAppendCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 2 {
 		return fmt.Errorf("expected 2 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	parent := args[0]
 	child := args[1]

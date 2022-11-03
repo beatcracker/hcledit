@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/minamijoyo/hcledit/global"
 )
 
 // BlockListSink is a sink implementation for getting a list of block addresses.
@@ -36,5 +37,5 @@ func toAddress(b *hclwrite.Block) string {
 	addr := []string{}
 	addr = append(addr, b.Type())
 	addr = append(addr, (b.Labels())...)
-	return strings.Join(addr, ".")
+	return strings.Join(addr, global.Delimiter)
 }

@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/minamijoyo/hcledit/global"
 )
 
 // AttributeRemoveFilter is a filter implementation for removing attribute.
@@ -28,7 +29,7 @@ func (f *AttributeRemoveFilter) Filter(inFile *hclwrite.File) (*hclwrite.File, e
 	}
 
 	if attr != nil {
-		a := strings.Split(f.address, ".")
+		a := strings.Split(f.address, global.Delimiter)
 		attrName := a[len(a)-1]
 		body.RemoveAttribute(attrName)
 	}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/minamijoyo/hcledit/editor"
+	"github.com/minamijoyo/hcledit/global"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -52,6 +53,8 @@ func runAttributeGetCmd(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("expected 1 argument, but got %d arguments", len(args))
 	}
 
+	global.Delimiter = viper.GetString("delimiter")
+
 	address := args[0]
 	file := viper.GetString("file")
 	update := viper.GetBool("update")
@@ -89,6 +92,8 @@ func runAttributeSetCmd(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("expected 2 argument, but got %d arguments", len(args))
 	}
 
+	global.Delimiter = viper.GetString("delimiter")
+
 	address := args[0]
 	value := args[1]
 	file := viper.GetString("file")
@@ -118,6 +123,8 @@ func runAttributeRmCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 1 {
 		return fmt.Errorf("expected 1 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	address := args[0]
 	file := viper.GetString("file")
@@ -156,6 +163,8 @@ func runAttributeAppendCmd(cmd *cobra.Command, args []string) error {
 	if len(args) != 2 {
 		return fmt.Errorf("expected 2 argument, but got %d arguments", len(args))
 	}
+
+	global.Delimiter = viper.GetString("delimiter")
 
 	address := args[0]
 	value := args[1]

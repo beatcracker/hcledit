@@ -19,10 +19,15 @@ var RootCmd = &cobra.Command{
 func init() {
 	// set global flags
 	flags := RootCmd.PersistentFlags()
+
 	flags.StringP("file", "f", "-", "A path of input file")
-	flags.BoolP("update", "u", false, "Update files in-place")
 	_ = viper.BindPFlag("file", flags.Lookup("file"))
+
+	flags.BoolP("update", "u", false, "Update files in-place")
 	_ = viper.BindPFlag("update", flags.Lookup("update"))
+
+	flags.StringP("delimiter", "d", ".", "Delimiter for address parts")
+	_ = viper.BindPFlag("delimiter", flags.Lookup("delimiter"))
 
 	setDefaultStream(RootCmd)
 }

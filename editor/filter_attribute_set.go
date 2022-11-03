@@ -6,6 +6,7 @@ import (
 
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/minamijoyo/hcledit/global"
 )
 
 // AttributeSetFilter is a filter implementation for setting attribute.
@@ -32,7 +33,7 @@ func (f *AttributeSetFilter) Filter(inFile *hclwrite.File) (*hclwrite.File, erro
 	}
 
 	if attr != nil {
-		a := strings.Split(f.address, ".")
+		a := strings.Split(f.address, global.Delimiter)
 		attrName := a[len(a)-1]
 
 		// To delegate expression parsing to the hclwrite parser,
